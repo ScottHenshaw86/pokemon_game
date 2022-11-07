@@ -1,0 +1,4 @@
+// BATTLE LOOP
+function battle() {
+    
+}

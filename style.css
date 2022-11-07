@@ -1,0 +1,248 @@
+:root {
+    font-size: clamp(10px, calc(100vw / 92), 18px);
+    
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+} 
+
+body {
+    height: 100vh;
+    position:relative;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+section {
+    display: none;
+    height: 100%;
+    width: 100%;
+}
+
+section.open {
+    display: block;
+}
+
+#battle-screen {
+    background-image: url(./assets/images/bg.webp);
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.filter {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(186, 41, 41,0.7);
+    opacity: 0;
+    z-index: -1;
+    animation: flicker .3s linear 1;
+}
+
+.hidden {
+    opacity: 0;
+    transition: .8s;
+}
+
+.pokemon {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 1;
+    transition: 1s;
+}
+
+.hp-bar {
+    width: 12rem;
+    height: 20px;
+    border-radius: 10px;
+    background-color: white;
+    margin-top: 10px;
+    overflow: hidden;
+    box-shadow: 2px 2px 8px 1px rgba(0,0,0,.5);
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.remaining-hp {
+    background-color:firebrick;
+    height: 100%;
+    width: 100%;
+    transition: .5s;
+}
+
+#player {
+    top: 47%;
+    left: 25%;
+    z-index: 1;
+}
+
+#player.attacking {
+    animation: player_attack .8s linear;
+}
+
+#player > img {
+    width: 16rem;
+}
+
+#enemy {
+    top: 27%;
+    left: 62%;
+    transform: rotateY(180deg);
+}
+
+#enemy.attacking {
+    animation: enemy_attack .8s linear;
+}
+
+#enemy > img {
+    width: 12rem;
+}
+
+.pokemon.defeated {
+    opacity: 0;
+}
+
+.box {
+    width: 40%;
+    border-radius: .8rem;
+    box-shadow: 5px 5px 15px 10px rgba(0,0,0,.5);
+    background-color: rgba(255,255,255,0.4);
+    overflow: hidden;
+    position: absolute;
+    transition: .5s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.info {
+    top: 20%;
+    left: 5%;
+    height: 10%;
+    align-items: flex-start;
+}
+
+.info > h2 {
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    /* border-right: .15em solid orange; The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    /* margin: 0 auto; Gives that scrolling effect as the typing happens */
+    letter-spacing: .05em; /* Adjust as needed */
+    animation: typing 1.5s steps(50, end) .4s;
+}
+
+.options {
+    bottom: 2%;
+    right: 2%;
+    padding: 20px 5px;
+}
+
+.options > hr {
+    width: 94%;
+    height: 1.5px;
+    background-color: rgba(0,0,0,.4);
+    border: none;
+    margin: 5px 0 10px 0;
+}
+
+.attacks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 100%;
+}
+.attacks > h3 {
+    width: 45%;
+    height: 60px;
+    border-radius: 10px;
+    background-color: rgba(0,0,0,.5);
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.attacks > h3:hover {
+    transform: scale(1.02);
+    box-shadow: 3px 3px 5px rgba(0,0,0,.5);
+    cursor: pointer;
+}
+
+.attacks > h3.fire {
+   background-color: rgba(255, 0, 0, 0.7);
+}
+
+.attacks > h3.water {
+   background-color: rgba(0, 0, 255, 0.7);
+}
+
+.attacks > h3.grass {
+   background-color: rgba(15, 177, 15, 0.7);
+}
+
+/* ==== Table for MAP ==== */
+table {
+    border-collapse: collapse;
+    width: 100vw;
+    height: 100vh;
+    font-size: 0;
+}
+
+td, td > img {
+    width: 6.25vw;
+    height: 8.333vh;
+}
+
+@keyframes flicker {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes player_attack {
+    40% {
+        top: 30%;
+        left: 50%;
+    }
+    50% {
+        top: 35%;
+        left: 45%;
+    }
+    60% {
+        top: 30%;
+        left: 50%;
+    }
+}
+@keyframes enemy_attack {
+    40% {
+        top: 52%;
+        left: 33%;
+    }
+    50% {
+        top: 47%;
+        left: 38%;
+    }
+    60% {
+        top: 52%;
+        left: 33%;
+    }
+}
+
+/* The typing effect */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
