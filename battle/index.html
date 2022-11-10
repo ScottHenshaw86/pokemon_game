@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./assets/images/icon.png" type="image/x-icon">
+    <script defer src="./utility.js"></script>
+    <script defer src="./maps.js"></script>
+    <script defer src="./pokemon.js"></script>
+    <script defer src="./attack.js"></script>
+    <script defer src="./battle.js"></script>
+    <script defer src="./main.js"></script>
+    <title>POKEMON!</title>
+</head>
+<body>
+
+    <section id="map-screen" class=""></section>
+    <!-- ======== BATTLE SCREEN ======== -->
+    <section id="battle-screen" class="open">
+        <div class="filter"></div>
+        <h1><img src="./assets/images/logo.png"></h1>
+    
+        <!-- Player's Pokemon -->
+        <div class="pokemon" id="player">
+            <img src="./assets/images/pokemon/fire.png" alt="" width="250">
+            <div class="hp-bar">
+                <div class="remaining-hp"></div>
+            </div>
+        </div>
+        
+        <!-- Enemy Pokemon -->
+        <div class="pokemon" id="enemy">
+            <img src="./assets/images/pokemon/water.png" alt="" width="250">
+            <div class="hp-bar">
+                <div class="remaining-hp"></div>
+            </div>
+        </div>
+    
+        <!-- Info Text  -->
+        <div class="info box">
+            <h2>The battle begins</h2>
+        </div>
+    
+        <!-- Options Box -->
+        <div class="options box">
+            <h1>The battle begins!</h1>
+            <hr>
+            <div class="attacks">
+                <h3 onclick="attack(firemon, 'player', basicAttack, grassmon);">Attack 1</h3>
+                <h3 onclick="attack(firemon, 'player', quickAttack, grassmon);">Attack 2</h3>
+                <h3 onclick="attack(firemon, 'player', fireAttack, grassmon);" class="fire">Attack 3</h3>
+                <h3 onclick="attack(firemon, 'player', flameAttack, grassmon);" class="fire">Attack 4</h3>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
